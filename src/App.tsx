@@ -1,19 +1,23 @@
 import { useCounterStore } from "./store/counterStore";
+import { shallow } from "zustand/shallow";
 
 function App() {
   // const count = useCounterStore((state) => state.count);
   // const title = useCounterStore((state) => state.title);
 
-  const values = useCounterStore((state) => ({
-    count: state.count,
-    title: state.title,
-  }));
-
-  console.log(values);
+  const { title, count } = useCounterStore(
+    (state) => ({
+      count: state.count,
+      title: state.title,
+    }),
+    shallow
+  );
 
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>
+        {title}: {count}
+      </h1>
     </div>
   );
 }
