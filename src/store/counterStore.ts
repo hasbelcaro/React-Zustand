@@ -14,9 +14,10 @@ interface CounterState {
   posts: Post[];
   getPosts: () => Promise<void>;
   clearStore: () => void;
+  multiply: (value: number) => void;
 }
 
-export const useCounterStore = create<CounterState>((set) => ({
+export const useCounterStore = create<CounterState>((set, get) => ({
   count: 10,
   title: "Some title",
   increment: (value: number) =>
@@ -35,5 +36,9 @@ export const useCounterStore = create<CounterState>((set) => ({
   },
   clearStore: () => {
     set({}, true);
+  },
+  multiply: (value: number) => {
+    const { count } = get();
+    set({ count: count * value });
   },
 }));
