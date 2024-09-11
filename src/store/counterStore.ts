@@ -13,6 +13,7 @@ interface CounterState {
   increment: (value: number) => void;
   posts: Post[];
   getPosts: () => Promise<void>;
+  clearStore: () => void;
 }
 
 export const useCounterStore = create<CounterState>((set) => ({
@@ -31,5 +32,8 @@ export const useCounterStore = create<CounterState>((set) => ({
       ...state,
       posts,
     }));
+  },
+  clearStore: () => {
+    set({}, true);
   },
 }));

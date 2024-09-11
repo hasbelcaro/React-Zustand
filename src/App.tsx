@@ -18,7 +18,7 @@ function App() {
 
   // Obtener función del store
   // const increment = useCounterStore((state) => state.increment);
-  const { increment, getPosts } = useCounterStore(); //Destructuring
+  const { increment, getPosts, clearStore } = useCounterStore(); //Destructuring
 
   useEffect(() => {
     getPosts();
@@ -36,6 +36,14 @@ function App() {
         }}
       >
         Increment by 10
+      </button>
+
+      <button
+        onClick={() => {
+          clearStore();
+        }}
+      >
+        Clean
       </button>
 
       <hr />
